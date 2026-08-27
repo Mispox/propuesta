@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta importante</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #da291c; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Animación suave para la caja */
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .container {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: latido 3s ease-in-out infinite; 
+        }
+        
+        h1 {
+            color: black;
+            margin-bottom: 30px;
+        }
+        button {
+            font-size: 20px;
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        #btnSi {
+            background-color: #28a745;
+            color: white;
+            box-shadow: 0 4px 0 #1e7e34;
+        }
+        #btnNo {
+            background-color: #333333; 
+            color: white;
+            box-shadow: 0 4px 0 #111111;
+            z-index: 999; 
+        }
+
+        .imagen-final {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+            max-height: 250px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="contenedor">
+        <h1>¿Querés ser mi novia? ❤️</h1>
+        <div class="botones">
+            <button id="btnSi">Sí</button>
+            <button id="btnNo">No</button>
+        </div>
+    </div>
+
+    <script>
+        const btnNo = document.getElementById('btnNo');
+        const btnSi = document.getElementById('btnSi');
+        const contenedor = document.getElementById('contenedor');
+
+        btnNo.addEventListener('mouseenter', () => {
+           
+            if (btnNo.parentNode !== document.body) {
+                document.body.appendChild(btnNo);
+            }
+            
+            btnNo.style.position = 'absolute';
+            
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 20);
+            
+            btnNo.style.left = `${Math.max(10, x)}px`;
+            btnNo.style.top = `${Math.max(10, y)}px`;
+        });
+
+        btnSi.addEventListener('click', () => {
+            contenedor.innerHTML = `
+                <h1>¡Sabía que ibas a decir que sí! 🥰</h1>
+                <p>te amo mucho</p>
+                <img src="marx.png" alt="" class="imagen-final">
+            `;
+        });
+    </script>
+</body>
+</html>
