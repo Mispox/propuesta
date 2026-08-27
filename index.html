@@ -33,7 +33,7 @@
         }
         
         h1 {
-            color: black;
+            color: #d63384;
             margin-bottom: 30px;
         }
         button {
@@ -85,7 +85,6 @@
         const contenedor = document.getElementById('contenedor');
 
         btnNo.addEventListener('mouseenter', () => {
-           
             if (btnNo.parentNode !== document.body) {
                 document.body.appendChild(btnNo);
             }
@@ -105,6 +104,8 @@
                 <p>te amo mucho</p>
                 <img src="marx.png" alt="" class="imagen-final">
             `;
+           
+            btnNo.remove();
         });
     </script>
 </body>
