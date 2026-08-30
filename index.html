@@ -134,11 +134,16 @@
             btnNo.style.top = `${Math.max(10, y)}px`;
         }
 
-        btnNo.addEventListener('mouseenter', moverBtnNo);
-        btnNo.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            moverBtnNo();
-        }, { passive: false });
+        const tieneMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        if (tieneMouse) {
+            btnNo.addEventListener('mouseenter', moverBtnNo);
+        } else {
+            btnNo.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                moverBtnNo();
+            }, { passive: false });
+        }
 
         btnSi.addEventListener('click', () => {
             contenedor.innerHTML = `
